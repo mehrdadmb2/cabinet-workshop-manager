@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>کارگاه کابینت‌سازی - مدیریت حرفه‌ای</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2b2d42" />
+  <meta name="description" content="مدیریت کامل کارگاه کابینت‌سازی، جایگزین فایل‌های اکسل" />
+</head>
+<body>
+  <!-- هدر با لوگو و ناوبری -->
+  <header class="glass-header">
+    <div class="logo">
+      <h1>📐 کارگاه کابینت</h1>
+      <span class="badge">v2.0</span>
+    </div>
+    <nav>
+      <button id="btnNewSheet" class="btn-primary">➕ شیت جدید</button>
+      <button id="btnSaveState" class="btn-secondary">💾 ذخیره</button>
+      <button id="btnLoadState" class="btn-secondary">📂 بارگذاری</button>
+      <button id="btnExportPDF" class="btn-accent">📄 PDF</button>
+      <button id="btnExportExcel" class="btn-accent">📊 Excel</button>
+      <button id="btnTelegram" class="btn-telegram">✈️ تلگرام</button>
+    </nav>
+  </header>
+
+  <!-- سایدبار برای لیست شیت‌ها -->
+  <aside class="sheet-sidebar glass">
+    <h3>شیت‌ها</h3>
+    <ul id="sheetList"></ul>
+  </aside>
+
+  <!-- منطقه اصلی: نمایش شیت فعال + ابزار نقشه‌کشی -->
+  <main class="main-content">
+    <div id="sheetContainer">
+      <!-- هدر شیت (ردیف‌های عنوان) -->
+      <div id="sheetHeader"></div>
+      <!-- جدول داده‌های شیت -->
+      <div id="sheetTableWrapper">
+        <table id="sheetTable">
+          <thead id="tableHead"></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <!-- ابزارهای نقشه‌کشی (برای شیت‌های خاص) -->
+      <div id="drawingTool" class="drawing-area glass">
+        <canvas id="drawingCanvas" width="800" height="600"></canvas>
+        <div class="drawing-controls">
+          <button id="addDimension" class="btn-sm">➕ اندازه</button>
+          <button id="clearDrawing" class="btn-sm">🗑️ پاک کردن</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- مودال برای افزودن/ویرایش ردیف -->
+  <div id="modal" class="modal glass">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 id="modalTitle">ویرایش ردیف</h2>
+      <form id="rowForm">
+        <div id="formFields"></div>
+        <button type="submit" class="btn-primary">ذخیره</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- اعلان‌ها (toast) -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+  <script>
+    // ثبت سرویس‌ورکر برای PWA و کش
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('SW registered'))
+        .catch(() => console.log('SW registration failed'));
+    }
+  </script>
+</body>
+</html>
