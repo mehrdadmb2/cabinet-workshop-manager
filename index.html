@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>کارگاه کابینت‌سازی - مدیریت حرفه‌ای</title>
+  <title>کارگاه کابینت‌سازی</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#2b2d42" />
-  <meta name="description" content="مدیریت کامل کارگاه کابینت‌سازی، جایگزین فایل‌های اکسل" />
+  <meta name="description" content="مدیریت کامل کارگاه کابینت‌سازی" />
 </head>
 <body>
-  <!-- هدر با لوگو و ناوبری -->
   <header class="glass-header">
     <div class="logo">
       <h1>📐 کارگاه کابینت</h1>
@@ -26,36 +25,30 @@
     </nav>
   </header>
 
-  <!-- سایدبار برای لیست شیت‌ها -->
   <aside class="sheet-sidebar glass">
     <h3>شیت‌ها</h3>
     <ul id="sheetList"></ul>
   </aside>
 
-  <!-- منطقه اصلی: نمایش شیت فعال + ابزار نقشه‌کشی -->
   <main class="main-content">
     <div id="sheetContainer">
-      <!-- هدر شیت (ردیف‌های عنوان) -->
       <div id="sheetHeader"></div>
-      <!-- جدول داده‌های شیت -->
       <div id="sheetTableWrapper">
         <table id="sheetTable">
           <thead id="tableHead"></thead>
           <tbody id="tableBody"></tbody>
         </table>
       </div>
-      <!-- ابزارهای نقشه‌کشی (برای شیت‌های خاص) -->
       <div id="drawingTool" class="drawing-area glass">
         <canvas id="drawingCanvas" width="800" height="600"></canvas>
         <div class="drawing-controls">
           <button id="addDimension" class="btn-sm">➕ اندازه</button>
-          <button id="clearDrawing" class="btn-sm">🗑️ پاک کردن</button>
+          <button id="clearDrawing" class="btn-sm">🗑️ پاک</button>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- مودال برای افزودن/ویرایش ردیف -->
   <div id="modal" class="modal glass">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
@@ -67,16 +60,14 @@
     </div>
   </div>
 
-  <!-- اعلان‌ها (toast) -->
   <div id="toast" class="toast"></div>
 
   <script src="app.js"></script>
   <script>
-    // ثبت سرویس‌ورکر برای PWA و کش
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js')
-        .then(() => console.log('SW registered'))
-        .catch(() => console.log('SW registration failed'));
+        .then(() => console.log('SW ثبت شد'))
+        .catch(() => console.log('SW ثبت نشد'));
     }
   </script>
 </body>
