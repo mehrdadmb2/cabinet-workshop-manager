@@ -1,9 +1,8 @@
-/* reset & base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 body {
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -13,18 +12,14 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-/* glassmorphism */
 .glass {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
-
-/* header */
 .glass-header {
   display: flex;
   flex-wrap: wrap;
@@ -38,10 +33,7 @@ body {
   align-items: center;
   gap: 0.8rem;
 }
-.logo h1 {
-  font-weight: 300;
-  letter-spacing: 1px;
-}
+.logo h1 { font-weight: 300; letter-spacing: 1px; }
 .badge {
   background: linear-gradient(135deg, #f093fb, #f5576c);
   padding: 0.2rem 0.8rem;
@@ -56,8 +48,6 @@ nav {
   flex-wrap: wrap;
   gap: 0.6rem;
 }
-
-/* buttons */
 .btn-primary, .btn-secondary, .btn-accent, .btn-telegram {
   border: none;
   padding: 0.5rem 1.2rem;
@@ -65,7 +55,7 @@ nav {
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: 0.25s ease;
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(6px);
   color: #fff;
@@ -84,12 +74,8 @@ nav {
   color: #fff;
   cursor: pointer;
 }
-button:hover {
-  transform: scale(1.04);
-  opacity: 0.9;
-}
+button:hover { transform: scale(1.04); opacity: 0.9; }
 
-/* sidebar */
 .sheet-sidebar {
   position: fixed;
   top: 100px;
@@ -100,9 +86,7 @@ button:hover {
   overflow-y: auto;
   z-index: 10;
 }
-.sheet-sidebar ul {
-  list-style: none;
-}
+.sheet-sidebar ul { list-style: none; }
 .sheet-sidebar li {
   padding: 0.5rem 0.8rem;
   margin: 0.3rem 0;
@@ -113,11 +97,10 @@ button:hover {
   font-size: 0.9rem;
 }
 .sheet-sidebar li.active {
-  background: rgba(102, 126, 234, 0.4);
+  background: rgba(102,126,234,0.4);
   border-right: 4px solid #667eea;
 }
 
-/* main content */
 .main-content {
   margin-right: 220px;
   padding: 0.5rem;
@@ -129,8 +112,6 @@ button:hover {
   padding: 1.5rem;
   backdrop-filter: blur(4px);
 }
-
-/* table */
 #sheetTable {
   width: 100%;
   border-collapse: collapse;
@@ -142,19 +123,13 @@ button:hover {
   text-align: center;
   min-width: 60px;
 }
-#sheetTable th {
-  background: rgba(255,255,255,0.08);
-  font-weight: 600;
-}
-#sheetTable td {
-  background: rgba(255,255,255,0.02);
-}
+#sheetTable th { background: rgba(255,255,255,0.08); font-weight: 600; }
+#sheetTable td { background: rgba(255,255,255,0.02); }
 #sheetTable td[contenteditable="true"]:focus {
   background: rgba(255,255,255,0.12);
   outline: 2px solid #667eea;
 }
 
-/* drawing canvas */
 .drawing-area {
   margin-top: 2rem;
   padding: 1rem;
@@ -175,11 +150,11 @@ button:hover {
   flex-wrap: wrap;
 }
 
-/* modal */
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(8px);
   justify-content: center;
@@ -202,10 +177,7 @@ button:hover {
   cursor: pointer;
   color: #aaa;
 }
-#rowForm label {
-  display: block;
-  margin: 0.5rem 0 0.2rem;
-}
+#rowForm label { display: block; margin: 0.5rem 0 0.2rem; }
 #rowForm input, #rowForm select {
   width: 100%;
   padding: 0.5rem;
@@ -216,7 +188,6 @@ button:hover {
   font-size: 1rem;
 }
 
-/* toast */
 .toast {
   position: fixed;
   bottom: 2rem;
@@ -233,12 +204,8 @@ button:hover {
   transition: all 0.4s ease;
   z-index: 999;
 }
-.toast.show {
-  transform: translateY(0);
-  opacity: 1;
-}
+.toast.show { transform: translateY(0); opacity: 1; }
 
-/* responsive */
 @media (max-width: 768px) {
   .sheet-sidebar {
     position: relative;
@@ -248,15 +215,7 @@ button:hover {
     max-height: 200px;
     margin-bottom: 1rem;
   }
-  .main-content {
-    margin-right: 0;
-  }
-  .glass-header {
-    flex-direction: column;
-    gap: 0.8rem;
-    align-items: stretch;
-  }
-  nav {
-    justify-content: center;
-  }
+  .main-content { margin-right: 0; }
+  .glass-header { flex-direction: column; gap: 0.8rem; align-items: stretch; }
+  nav { justify-content: center; }
 }
