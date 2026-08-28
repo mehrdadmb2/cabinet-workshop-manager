@@ -127,12 +127,47 @@ document.getElementById('btnExportExcel').addEventListener('click', () => {
   // const wb = XLSX.utils.book_new(); ...
 });
 
-// ================== TELEGRAM ==================
-document.getElementById('btnTelegram').addEventListener('click', () => {
-  showToast('✈️ ارسال به تلگرام ...');
-  // const blob = new Blob([JSON.stringify(state)], {type:'application/json'});
-  // const formData = new FormData(); formData.append('file', blob, 'backup.json');
-  // fetch('https://your-worker.workers.dev/send', { method:'POST', body:formData })
+// ================== TELEGRAM (ارسال بکاپ) ==================
+document.getElementById('btnTelegram').addEventListener('click', async () => {
+  showToast('✈️ در حال ارسال به تلگرام ...');
+
+  try {
+    const jsonData = JSON.stringify(state);
+    const blob = new Blob([jsonData], { type: 'application/json' });
+
+    const now = new Date();
+    const timestamp = 
+      now.getFullYear() + '-' +
+      String(now.getMonth() + 1).padStart(2, '0') + '-' +
+      String(now.getDate()).padStart(2, '0') + '_' +
+      String(now.getHours()).padStart(2, '0') + '-' +
+      String(now.getMinutes()).padStart(2, '0') + '-' +
+      String(now.getSeconds()).padStart(2, '0');
+    const fileName = `Backup_Workshop_${timestamp}.json`;
+
+    const file = new File([blob], fileName, { type: 'application/json' });
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // 🔽 آدرس ورکر خود را دقیقاً وارد کنید
+    const WORKER_URL = 'https://cabinet-backup-worker.game-developer-mb.workers.dev/';
+
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      showToast('✅ فایل با موفقیت به تلگرام ارسال شد');
+    } else {
+      showToast('❌ خطا در ارسال: ' + (result.error || 'مشخص نیست'));
+    }
+  } catch (error) {
+    console.error(error);
+    showToast('❌ خطای شبکه یا سرور');
+  }
 });
 
 // ================== DRAWING ==================
