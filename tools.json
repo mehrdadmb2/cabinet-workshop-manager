@@ -1,0 +1,9 @@
+{
+  "reference_workbooks": {
+    "مهندس کیانی(1).xlsx": {"sheets":25},
+    "آقای شناور(1).xlsx": {"sheets":21}
+  },
+  "drawing_goal": "2D CAD-like technical drawing with real-world dimensions, snap, grid, live part list, print PDF",
+  "web_export": ["xlsx","pdf","kwm","csv"],
+  "worker_endpoints": ["/health","/test-telegram","/backup"]
+}
